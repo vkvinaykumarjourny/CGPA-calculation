@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CGPA Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f0f8ff;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      max-width: 350px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input {
+      width: 80px;
+      padding: 5px;
+      margin: 5px;
+    }
+    label {
+      display: inline-block;
+      width: 100px;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      color: green;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px 5px 0 0;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .clear-btn {
+      background: #dc3545;
+    }
+    .clear-btn:hover {
+      background: #a71d2a;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>CGPA Calculator</h2>
+    <form id="cgpaForm">
+      <div>
+        <h4>Enter Grades and Credits</h4>
+        <div>
+          <label>Subject 1:</label>
+          <input type="number" step="0.01" placeholder="Grade" id="g1" required>
+          <input type="number" placeholder="Credit" id="c1" required>
+        </div>
+        <div>
+          <label>Subject 2:</label>
+          <input type="number" step="0.01" placeholder="Grade" id="g2" required>
+          <input type="number" placeholder="Credit" id="c2" required>
+        </div>
+        <div>
+          <label>Subject 3:</label>
+          <input type="number" step="0.01" placeholder="Grade" id="g3" required>
+          <input type="number" placeholder="Credit" id="c3" required>
+        </div>
+        <div>
+          <label>Subject 4:</label>
+          <input type="number" step="0.01" placeholder="Grade" id="g4" required>
+          <input type="number" placeholder="Credit" id="c4" required>
+        </div>
+        <div>
+          <label>Subject 5:</label>
+          <input type="number" step="0.01" placeholder="Grade" id="g5" required>
+          <input type="number" placeholder="Credit" id="c5" required>
+        </div>
+        <div>
+        <label>Subject 6:</label>
+          <input type="number" step="0.01" placeholder="Grade" id="g5" required>
+          <input type="number" placeholder="Credit" id="c5" required>
+        </div>
+        <div>
+        <label>Subject 7:</label>
+          <input type="number" step="0.01" placeholder="Grade" id="g5" required>
+          <input type="number" placeholder="Credit" id="c5" required>
+        </div>
+        <div>
+        <label>Subject 8:</label>
+          <input type="number" step="0.01" placeholder="Grade" id="g5" required>
+          <input type="number" placeholder="Credit" id="c5" required>
+        </div>
+        <div>
+        <label>Subject 9:</label>
+          <input type="number" step="0.01" placeholder="Grade" id="g5" required>
+          <input type="number" placeholder="Credit" id="c5" required>
+        </div>
+        <div>
+        <label>Subject 10:</label>
+          <input type="number" step="0.01" placeholder="Grade" id="g5" required>
+          <input type="number" placeholder="Credit" id="c5" required>
+        </div>
+        <div>
+        <button type="button" onclick="calculateCGPA()">Calculate CGPA</button>
+        <button type="button" class="clear-btn" onclick="clearForm()">Clear</button>
+        <div class="result" id="result"></div>
+      </div>
+      
+    </form>
+  </div>
+ <script>
+    function calculateCGPA() {
+      let totalGradePoints = 0;
+      let totalCredits = 0;
+
+      for (let i = 1; i <= 5; i++) {
+        let grade = parseFloat(document.getElementById("g" + i).value);
+        let credit = parseFloat(document.getElementById("c" + i).value);
+        if (!isNaN(grade) && !isNaN(credit)) {
+          totalGradePoints += grade * credit;
+          totalCredits += credit;
+        }
+      }
+
+      let cgpa = (totalGradePoints / totalCredits).toFixed(2);
+      document.getElementById("result").innerText = "Your CGPA is: " + cgpa;
+    }
+
+    function clearForm() {
+      for (let i = 1; i <= 5; i++) {
+        document.getElementById("g" + i).value = "";
+        document.getElementById("c" + i).value = "";
+      }
+      document.getElementById("result").innerText = "";
+    }
+  </script>
+</body>
+</html>
